@@ -7,13 +7,9 @@ dotenv.config();
 
 const INFURA_KEY = process.env.INFURA_KEY;
 
-export type Chain = "mainnet" | "goerli";
-
-export function getProvider(chain: Chain): Provider {
+export function getProvider(chain: string): Provider {
   if (INFURA_KEY !== undefined) {
-    return new ethers.providers.JsonRpcProvider(
-      `https://${chain}.infura.io/v3/${INFURA_KEY}`
-    );
+    return new ethers.providers.JsonRpcProvider(`https://${chain}.infura.io/v3/${INFURA_KEY}`);
   } else {
     return ethers.providers.getDefaultProvider(chain);
   }
