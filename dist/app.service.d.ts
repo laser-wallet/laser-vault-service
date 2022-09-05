@@ -1,6 +1,6 @@
-import { FactoryTransaction } from "laser-sdk/dist/sdk/LaserFactory";
-import { Transaction } from "./interfaces/transaction.interface";
+import { OffChainTransaction } from "./db/LaserDb";
+import { Address } from "laser-sdk/dist/types";
 export declare class AppService {
-    sendTransaction(sender: string, chainId: number, transaction: Transaction): Promise<any>;
-    createWallet(chainId: number, transaction: FactoryTransaction): Promise<any>;
+    updateDb(tx: OffChainTransaction): Promise<number>;
+    getTransactions(address: Address): Promise<OffChainTransaction[]>;
 }

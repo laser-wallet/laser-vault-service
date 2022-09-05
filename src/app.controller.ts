@@ -12,7 +12,7 @@ export class AppController {
     return this.appService.updateDb(postTransactionDto);
   }
 
-  @Get("getTransactions")
+  @Get("get-transactions")
   returnTransactions(@Body() getTransactionDto: GetTransactionDto) {
     return this.appService.getTransactions(getTransactionDto.wallet);
   }

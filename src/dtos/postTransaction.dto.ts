@@ -2,7 +2,7 @@ import { Transform } from "class-transformer";
 import { Type } from "class-transformer";
 import { IsNumber, Validate } from "class-validator";
 import { GetTransactionDto } from "./getTransaction.dto.";
-import { IsAddress } from "src/validators/isAddress.validator";
+import { IsAddress } from "../validators/isAddress.validator";
 import { BigNumber, BigNumberish } from "ethers";
 
 export class PostTransactionDto {

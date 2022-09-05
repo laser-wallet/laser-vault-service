@@ -1,6 +1,6 @@
 import level from "level-ts";
 import { BigNumberish } from "ethers";
-import { getProvider } from "src/providers/providers";
+import { getProvider } from "../providers/providers";
 import { verifyTransactions, bundleTransactions } from "../utils/utils";
 
 type Address = string;

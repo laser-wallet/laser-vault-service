@@ -1,15 +1,15 @@
 import { ethers } from "ethers";
 import { Provider } from "@ethersproject/providers";
 
-import dotenv from "dotenv";
-
-dotenv.config();
+require("dotenv").config();
 
 const INFURA_KEY = process.env.INFURA_KEY;
 
 export function getProvider(chain: string): Provider {
   if (INFURA_KEY !== undefined) {
-    return new ethers.providers.JsonRpcProvider(`https://${chain}.infura.io/v3/${INFURA_KEY}`);
+    return new ethers.providers.JsonRpcProvider(
+      `https://${chain}.infura.io/v3/${INFURA_KEY}`
+    );
   } else {
     return ethers.providers.getDefaultProvider(chain);
   }

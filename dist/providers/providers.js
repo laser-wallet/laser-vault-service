@@ -1,29 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createInfuraITXProvider = exports.getNetworkName = void 0;
+exports.getProvider = void 0;
 const ethers_1 = require("ethers");
-function getNetworkName(chainId) {
-    switch (chainId) {
-        case 1: {
-            return "mainnet";
-        }
-        case 3: {
-            return "ropsten";
-        }
-        case 5: {
-            return "goerli";
-        }
-        case 42: {
-            return "kovan";
-        }
-        default: {
-            throw Error("Unsupported chain id.");
-        }
+require("dotenv").config();
+const INFURA_KEY = process.env.INFURA_KEY;
+function getProvider(chain) {
+    if (INFURA_KEY !== undefined) {
+        return new ethers_1.ethers.providers.JsonRpcProvider(`https://${chain}.infura.io/v3/${INFURA_KEY}`);
+    }
+    else {
+        return ethers_1.ethers.providers.getDefaultProvider(chain);
     }
 }
-exports.getNetworkName = getNetworkName;
-function createInfuraITXProvider(network, infuraKey) {
-    return new ethers_1.ethers.providers.InfuraProvider(network, infuraKey);
-}
-exports.createInfuraITXProvider = createInfuraITXProvider;
+exports.getProvider = getProvider;
 //# sourceMappingURL=providers.js.map

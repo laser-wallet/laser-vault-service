@@ -1,6 +1,9 @@
-import { OffChainTransaction } from "src/db/LaserDb";
+import { OffChainTransaction } from "../db/LaserDb";
 
-export function verifyTransactions(tx1: OffChainTransaction, tx2: OffChainTransaction) {
+export function verifyTransactions(
+  tx1: OffChainTransaction,
+  tx2: OffChainTransaction
+) {
   if (tx1.to.toLowerCase() !== tx2.to.toLowerCase()) {
     throw Error("Transaction 'to' mismatch");
   }
@@ -32,7 +35,7 @@ export function verifyTransactions(tx1: OffChainTransaction, tx2: OffChainTransa
 
 export function bundleTransactions(
   tr1: OffChainTransaction,
-  tr2: OffChainTransaction,
+  tr2: OffChainTransaction
 ): OffChainTransaction {
   verifyPackedSignatures(tr1, tr2);
 
@@ -81,12 +84,23 @@ export function bundleTransactions(
   }
 }
 
-function verifyPackedSignatures(tr1: OffChainTransaction, tr2: OffChainTransaction) {
-  if (tr1.signer !== "owner" && tr1.signer !== "guardian" && tr1.signer !== "recoveryOwner") {
+function verifyPackedSignatures(
+  tr1: OffChainTransaction,
+  tr2: OffChainTransaction
+) {
+  if (
+    tr1.signer !== "owner" &&
+    tr1.signer !== "guardian" &&
+    tr1.signer !== "recoveryOwner"
+  ) {
     throw Error("Invalid signer");
   }
 
-  if (tr2.signer !== "owner" && tr2.signer !== "guardian" && tr2.signer !== "recoveryOwner") {
+  if (
+    tr2.signer !== "owner" &&
+    tr2.signer !== "guardian" &&
+    tr2.signer !== "recoveryOwner"
+  ) {
     throw Error("Invalid signer");
   }
 
@@ -94,7 +108,10 @@ function verifyPackedSignatures(tr1: OffChainTransaction, tr2: OffChainTransacti
     throw Error("Signers cannot be the same.");
   }
 
-  if (("value" in tr1 && !("value" in tr2)) || ("value" in tr2 && !("value" in tr1))) {
+  if (
+    ("value" in tr1 && !("value" in tr2)) ||
+    ("value" in tr2 && !("value" in tr1))
+  ) {
     throw Error("Transaction types mismatch.");
   }
 

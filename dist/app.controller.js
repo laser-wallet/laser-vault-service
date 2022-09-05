@@ -15,33 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const createWallet_dto_1 = require("./dtos/createWallet.dto");
-const sendTransactionDto_1 = require("./dtos/sendTransactionDto");
+const getTransaction_dto_1 = require("./dtos/getTransaction.dto.");
+const postTransaction_dto_1 = require("./dtos/postTransaction.dto");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    sendTransaction(sendTransactionDto) {
-        return this.appService.sendTransaction(sendTransactionDto.sender, sendTransactionDto.chainId, sendTransactionDto.transaction);
+    postTransaction(postTransactionDto) {
+        return this.appService.updateDb(postTransactionDto);
     }
-    createWallet(createWalletDto) {
-        return this.appService.createWallet(createWalletDto.chainId, createWalletDto.transaction);
+    returnTransactions(getTransactionDto) {
+        console.log("hello");
+        return this.appService.getTransactions(getTransactionDto.wallet);
     }
 };
 __decorate([
-    (0, common_1.Post)("transactions"),
+    (0, common_1.Post)("transaction"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [sendTransactionDto_1.SendTransactionDto]),
+    __metadata("design:paramtypes", [postTransaction_dto_1.PostTransactionDto]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "sendTransaction", null);
+], AppController.prototype, "postTransaction", null);
 __decorate([
-    (0, common_1.Post)("wallets"),
+    (0, common_1.Get)("get-transactions"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createWallet_dto_1.CreateWalletDto]),
+    __metadata("design:paramtypes", [getTransaction_dto_1.GetTransactionDto]),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "createWallet", null);
+], AppController.prototype, "returnTransactions", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

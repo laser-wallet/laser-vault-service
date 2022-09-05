@@ -7,11 +7,15 @@ import { Address } from "laser-sdk/dist/types";
 
 @Injectable()
 export class AppService {
-  async updateDb(tx: OffChainTransaction) {
-    const laserDB = new LaserDB();
+  db: LaserDB;
 
+  constructor() {
+    this.db = new LaserDB();
+  }
+
+  async updateDb(tx: OffChainTransaction) {
     try {
-      await laserDB.write(tx);
+      await this.db.write(tx);
       return 200;
     } catch (e) {
       throw Error(e);
@@ -19,8 +23,6 @@ export class AppService {
   }
 
   async getTransactions(address: Address) {
-    const laserDB = new LaserDB();
-
-    return laserDB.getAllTransactions(address.toLowerCase());
+    return this.db.getAllTransactions(address.toLowerCase());
   }
 }
