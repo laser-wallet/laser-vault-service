@@ -25,7 +25,6 @@ let AppController = class AppController {
         return this.appService.updateDb(postTransactionDto);
     }
     returnTransactions(getTransactionDto) {
-        console.log("hello");
         return this.appService.getTransactions(getTransactionDto.wallet);
     }
 };
