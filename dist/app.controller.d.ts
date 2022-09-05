@@ -6,4 +6,5 @@ export declare class AppController {
     constructor(appService: AppService);
     postTransaction(postTransactionDto: PostTransactionDto): Promise<number>;
     returnTransactions(getTransactionDto: GetTransactionDto): Promise<import("./db/LaserDb").OffChainTransaction[]>;
+    returnHello(name: string): string;
 }

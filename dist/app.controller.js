@@ -25,7 +25,11 @@ let AppController = class AppController {
         return this.appService.updateDb(postTransactionDto);
     }
     returnTransactions(getTransactionDto) {
+        console.log("wallet -->", getTransactionDto.wallet);
         return this.appService.getTransactions(getTransactionDto.wallet);
+    }
+    returnHello(name) {
+        return "hey there working";
     }
 };
 __decorate([
@@ -42,6 +46,12 @@ __decorate([
     __metadata("design:paramtypes", [getTransaction_dto_1.GetTransactionDto]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "returnTransactions", null);
+__decorate([
+    (0, common_1.Get)("hello"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "returnHello", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])

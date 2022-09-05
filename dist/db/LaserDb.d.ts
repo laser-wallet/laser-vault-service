@@ -1,11 +1,10 @@
-import { BigNumberish } from "ethers";
 declare type Address = string;
 export declare type OffChainTransaction = {
     wallet: Address;
     to: Address;
-    value: BigNumberish | Number;
+    value: string;
     callData: string;
-    nonce: BigNumberish;
+    nonce: string;
     signatures: string;
     signer: string;
     chain: string;

@@ -13,11 +13,11 @@ export class PostTransactionDto {
   to: string;
 
   @Transform(({ value }) => BigNumber.from(value))
-  value: BigNumberish;
+  value: string;
 
   callData: string;
 
-  nonce: number;
+  nonce: string;
 
   signatures: string;
 

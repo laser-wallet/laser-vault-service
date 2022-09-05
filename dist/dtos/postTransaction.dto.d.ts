@@ -1,10 +1,9 @@
-import { BigNumberish } from "ethers";
 export declare class PostTransactionDto {
     wallet: string;
     to: string;
-    value: BigNumberish;
+    value: string;
     callData: string;
-    nonce: number;
+    nonce: string;
     signatures: string;
     signer: string;
     chain: string;

@@ -26,7 +26,7 @@ __decorate([
 ], PostTransactionDto.prototype, "to", void 0);
 __decorate([
     (0, class_transformer_1.Transform)(({ value }) => ethers_1.BigNumber.from(value)),
-    __metadata("design:type", Object)
+    __metadata("design:type", String)
 ], PostTransactionDto.prototype, "value", void 0);
 exports.PostTransactionDto = PostTransactionDto;
 //# sourceMappingURL=postTransaction.dto.js.map

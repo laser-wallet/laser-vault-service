@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LaserDB = void 0;
 const level_ts_1 = require("level-ts");
-const providers_1 = require("../providers/providers");
 const utils_1 = require("../utils/utils");
 class LaserDB {
     constructor() {
@@ -28,7 +27,7 @@ class LaserDB {
         return results;
     }
     async write(tx) {
-        const provider = (0, providers_1.getProvider)(tx.chain.toString());
+        tx.value = tx.value.toString();
         let key = tx.wallet.toLowerCase() + tx.nonce.toString();
         let finalTransaction;
         let isStored;
